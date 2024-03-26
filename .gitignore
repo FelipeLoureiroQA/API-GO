@@ -1,0 +1,18 @@
+#Binarios
+
+*.exe
+*.dll
+*.pdb
+*.lib
+*.so
+*.dylib
+
+# Test
+
+*.test
+
+#Coverage Results
+
+*.out
+Db folder
+db/
