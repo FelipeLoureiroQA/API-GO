@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/FelipeLoureiroQA/API-GO/schemas"
@@ -31,7 +32,7 @@ func InitializeSQLite() (*gorm.DB, error) {
 	//Conexão com o banco de dados
 	db, err := gorm.Open(sqlite.Open("./db/main.db"), &gorm.Config{})
 	if err != nil {
-		logger.Errof("Error initializing SQLite: %v", err.Error())
+		logger.Errorf("Error initializing SQLite: %v", err.Error())
 		return nil, err
 
 	}
@@ -39,9 +40,11 @@ func InitializeSQLite() (*gorm.DB, error) {
 	err = db.AutoMigrate(&schemas.Opening{})
 
 	if err != nil {
-		logger.Errof("Error migrating schema: %v", err.Error())
+		logger.Errorf("Error migrating schema: %v", err.Error())
 		return nil, err
 	}
+
+	fmt.Println("Conected")
 
 	return db, nil
 }

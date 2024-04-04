@@ -14,8 +14,8 @@ var (
 func main() {
 	logger = config.GetLogger("main")
 	err := config.Init()
-	if err == nil {
-		logger.Err(fmt.Sprintf("Error initializing config: %v", err.Error()))
+	if err != nil {
+		logger.Err(fmt.Sprintf("Error initializing config: %v", err))
 
 		return
 	}
